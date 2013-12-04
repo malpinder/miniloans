@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable
 
   validates :password, confirmation: true
+  validates :username, :exclusion => %w{ eve@example.com }
 end
