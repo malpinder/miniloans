@@ -34,7 +34,7 @@ class Ability
     if user.is_admin?
       can :manage, :all
     else
-      can [:read, :update], User, id: user.id  # can only manage themselves
+      can [:read, :update], User, id: user.id  # can only see & edit themselves
     end
   end
 end

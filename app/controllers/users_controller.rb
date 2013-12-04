@@ -22,7 +22,8 @@ class UsersController < ApplicationController
   def update
     authorize! :update, @user
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      sign_in(@user, :bypass => true)
+      redirect_to @user, notice: 'Account was successfully updated.'
     else
       render action: 'edit'
     end
@@ -34,8 +35,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:title, :business_name, :amount, :description)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 end

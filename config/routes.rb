@@ -1,11 +1,10 @@
 Miniloans::Application.routes.draw do
 
-
   devise_for :users
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  resources :users
+  # Devise handles new & create through UserRegistrations
+  resources :users, except: [:new, :create]
+
   resources :loans do
     resources :bids, only: :create
     resources :comments, only: [:new, :create]
