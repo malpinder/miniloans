@@ -16,7 +16,7 @@
         <td><%= link_to bid.loan.title, bid.loan %></td>
         <td><%= link_to bid.user.username, bid.user %></td>
         <td><%= bid.amount %></td>
-        <td><%= link_to 'Edit', bid %></td>
+        <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
       </tr>
     <% end %>
   </tbody>
