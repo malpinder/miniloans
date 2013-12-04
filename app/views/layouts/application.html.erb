@@ -22,6 +22,7 @@
         <ul class="nav navbar-nav">
           <%= nav_link_for('Loans', loans_path) %>
           <%= nav_link_for('Users', users_path) if can?(:manage, User) %>
+          <%= nav_link_for('Bids', bids_path) if can?(:manage, Bid) %>
           <% if user_signed_in? %>
             <%= nav_link_for('My Account', user_path(current_user))%>
             <%= nav_link_for 'Sign out', destroy_user_session_path, method: :delete %>

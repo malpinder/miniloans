@@ -5,6 +5,8 @@ Miniloans::Application.routes.draw do
   # Devise handles new & create through UserRegistrations
   resources :users, except: [:new, :create]
 
+  resources :bids, only: [:index, :edit, :update]
+
   resources :loans do
     resources :bids, only: :create
     resources :comments, only: [:new, :create]

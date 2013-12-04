@@ -1,0 +1,23 @@
+<h1>Listing bids</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Loan</th>
+      <th>User</th>
+      <th>Amount</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bids.each do |bid| %>
+      <tr>
+        <td><%= link_to bid.loan.title, bid.loan %></td>
+        <td><%= link_to bid.user.username, bid.user %></td>
+        <td><%= bid.amount %></td>
+        <td><%= link_to 'Edit', bid %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

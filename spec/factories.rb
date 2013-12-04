@@ -24,4 +24,10 @@ FactoryGirl.define do
 
     text "These are words in a comment"
   end
+
+  factory :bid do
+    association :user
+    association :loan
+    amount 100
+  end
 end
