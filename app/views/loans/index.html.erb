@@ -1,0 +1,31 @@
+<h1>Listing loans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Business name</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loans.each do |loan| %>
+      <tr>
+        <td><%= loan.title %></td>
+        <td><%= loan.business_name %></td>
+        <td><%= loan.amount %></td>
+        <td><%= loan.description %></td>
+        <td><%= link_to 'Show', loan %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if can? :create, Loan %>
+  <%= link_to 'New Loan', new_loan_path %>
+<% end %>

@@ -1,0 +1,11 @@
+<li id="comment_<%= comment.id %>">
+  <p>
+    <strong><%= comment.user.username %> wrote:</strong><br/>
+    <%= comment.text %>
+  </p>
+  <%= link_to "Reply", new_comment_reply_path(comment) %>
+  <ul class="replies">
+    <%# `replies` are instances of Comment, so this renders _comment.html.erb %>
+    <%= render comment.replies %>
+  </ul>
+</li>

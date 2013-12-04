@@ -1,0 +1,46 @@
+<p>
+  <strong>Title:</strong>
+  <%= @loan.title %>
+</p>
+
+<p>
+  <strong>Business name:</strong>
+  <%= @loan.business_name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @loan.amount %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @loan.description %>
+</p>
+
+<% if can? :edit, @loan %>
+  <%= link_to 'Edit', edit_loan_path(@loan) %>
+<% end %>
+
+<p>
+  <strong>Amount remaining:</strong>
+  <%= @loan.amount_remaining %>
+</p>
+
+<% if user_signed_in? %>
+  <% if @loan.amount_remaining > 0 %>
+    <%= form_for [@loan, Bid.new] do |f| %>
+      <%= f.hidden_field :loan_id, value: @loan.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.label :amount, "Amount to bid" %>
+      <%= f.text_field :amount %>
+      <%= f.submit "Place bid" %>
+    <% end %>
+  <% end %>
+
+  <%= link_to "Add comment", new_loan_comment_path(@loan) %>
+<% end %>
+
+<ul id="comments">
+  <%= render @loan.comments %>
+</ul>
